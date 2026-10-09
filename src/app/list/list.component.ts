@@ -77,6 +77,11 @@ export class ListComponent implements OnInit {
         this.tasks = this.tasks.map((t) => (t.id === updated.id ? updated : t));
       });
       this.editingId = null;
+    } else {
+      this.taskService
+        .addTask(transformedTask)
+        .subscribe((t) => [...this.tasks, t]);
     }
+    this.taskForm.reset();
   }
 }
