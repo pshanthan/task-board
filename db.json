@@ -1,13 +1,4 @@
 {
-  "tasks": [
-    {
-      "id": "2",
-      "title": "Write docs",
-      "priority": "Low",
-      "dueDate": "2026-10-12",
-      "done": true,
-      "estimate": 2
-    }
-  ],
+  "tasks": [],
   "$schema": "./node_modules/json-server/schema.json"
 }
