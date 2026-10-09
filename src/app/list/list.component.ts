@@ -20,7 +20,7 @@ export class ListComponent implements OnInit {
   }
   deleteTask(id: number) {
     this.taskService.deleteTask(id).subscribe((t) => {
-      this.tasks = this.tasks.filter((t) => t.id === id);
+      this.tasks = this.tasks.filter((t) => id === t.id);
     });
   }
 }
