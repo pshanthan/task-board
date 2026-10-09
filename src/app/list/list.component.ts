@@ -66,4 +66,5 @@ export class ListComponent implements OnInit {
       estimate: String(t.estimate),
     });
   }
+  onSubmit() {}
 }
