@@ -52,12 +52,8 @@ export class ListComponent implements OnInit {
       this.tasks = this.tasks.filter((t) => id !== t.id);
     });
   }
-  addTask(t: Task) {
-    this.taskService.addTask(t).subscribe((tasks) => {
-      this.tasks = [...this.tasks, t];
-    });
-  }
   startEdit(t: Task) {
+    this.editingId = t.id ?? null;
     this.taskForm.patchValue({
       title: t.title,
       priority: t.priority,
@@ -66,7 +62,7 @@ export class ListComponent implements OnInit {
       estimate: String(t.estimate),
     });
   }
-  onSubmit(t: Task) {
+  onSubmit() {
     const raw = this.taskForm.getRawValue();
     const transformedTask: Task = {
       title: raw.title,
@@ -76,11 +72,11 @@ export class ListComponent implements OnInit {
       priority: raw.priority,
     };
     if (this.editingId) {
-      this.taskService.updateTask(t).subscribe((t) => {
-        const found = this.tasks.filter((t) => t.id === this.editingId);
-        if (found) {
-        }
+      transformedTask.id = this.editingId;
+      this.taskService.updateTask(transformedTask).subscribe((updated) => {
+        this.tasks = this.tasks.map((t) => (t.id === updated.id ? updated : t));
       });
+      this.editingId = null;
     }
   }
 }
