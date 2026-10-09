@@ -2,16 +2,45 @@ import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../task.service';
 import { Task } from '../models/Task';
 import { CommonModule } from '@angular/common';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-list',
-  imports: [CommonModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './list.component.html',
   styleUrl: './list.component.css',
 })
 export class ListComponent implements OnInit {
   constructor(private taskService: TaskService) {}
   tasks: Task[] = [];
+  editingId: number | null = null;
+  taskForm = new FormGroup({
+    title: new FormControl('', {
+      nonNullable: true,
+      validators: Validators.required,
+    }),
+    priority: new FormControl('', {
+      nonNullable: true,
+      validators: Validators.required,
+    }),
+    dueDate: new FormControl('', {
+      nonNullable: true,
+      validators: Validators.required,
+    }),
+    done: new FormControl(false, {
+      nonNullable: true,
+      validators: Validators.required,
+    }),
+    estimate: new FormControl('', {
+      nonNullable: true,
+      validators: Validators.required,
+    }),
+  });
   ngOnInit(): void {
     this.getTasks();
   }
@@ -26,6 +55,15 @@ export class ListComponent implements OnInit {
   addTask(t: Task) {
     this.taskService.addTask(t).subscribe((tasks) => {
       this.tasks = [...this.tasks, t];
+    });
+  }
+  startEdit(t: Task) {
+    this.taskForm.patchValue({
+      title: t.title,
+      priority: t.priority,
+      dueDate: t.dueDate,
+      done: t.done,
+      estimate: String(t.estimate),
     });
   }
 }

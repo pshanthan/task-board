@@ -1,5 +1,14 @@
+<form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+  <input formControlName="title" />
+  <input formControlName="priority" />
+  <input formControlName="estimate" />
+  <input formControlName="dueDate" />
+  <button type="submit"></button>
+</form>
+
 <div *ngFor="let t of tasks">
   {{ t.title }} - {{ t.priority }} - {{ t.estimate }} - {{ t.dueDate }} -
   {{ t.done }}
   <button (click)="deleteTask(t.id!)">DELETE</button>
+  <button (click)="startEdit(t)">EDIT</button>
 </div>
