@@ -23,4 +23,9 @@ export class ListComponent implements OnInit {
       this.tasks = this.tasks.filter((t) => id !== t.id);
     });
   }
+  addTask(t: Task) {
+    this.taskService.addTask(t).subscribe((tasks) => {
+      this.tasks = [...this.tasks, t];
+    });
+  }
 }
