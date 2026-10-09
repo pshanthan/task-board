@@ -19,7 +19,7 @@ export class ListComponent implements OnInit {
     this.taskService.getTasks().subscribe((t) => (this.tasks = t));
   }
   deleteTask(id: number) {
-    this.taskService.deleteTask(id).subscribe((t) => {
+    this.taskService.deleteTask(id).subscribe(() => {
       this.tasks = this.tasks.filter((t) => id === t.id);
     });
   }
