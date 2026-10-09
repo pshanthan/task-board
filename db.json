@@ -1,15 +1,7 @@
 {
   "tasks": [
     {
-      "id": 1,
-      "title": "Fix login bug",
-      "priority": "High",
-      "dueDate": "2026-10-10",
-      "done": false,
-      "estimate": 4
-    },
-    {
-      "id": 2,
+      "id": "2",
       "title": "Write docs",
       "priority": "Low",
       "dueDate": "2026-10-12",
@@ -17,12 +9,13 @@
       "estimate": 2
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "Code review",
       "priority": "Medium",
       "dueDate": "2026-10-11",
       "done": false,
       "estimate": 1
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
