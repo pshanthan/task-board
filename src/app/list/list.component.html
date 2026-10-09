@@ -1,4 +1,5 @@
 <div *ngFor="let t of tasks">
   {{ t.title }} - {{ t.priority }} - {{ t.estimate }} - {{ t.dueDate }} -
   {{ t.done }}
+  <button (click)="deleteTask(t.id!)">DELETE</button>
 </div>
