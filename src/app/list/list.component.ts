@@ -66,5 +66,21 @@ export class ListComponent implements OnInit {
       estimate: String(t.estimate),
     });
   }
-  onSubmit() {}
+  onSubmit(t: Task) {
+    const raw = this.taskForm.getRawValue();
+    const transformedTask: Task = {
+      title: raw.title,
+      done: raw.done,
+      dueDate: raw.dueDate,
+      estimate: Number(raw.estimate),
+      priority: raw.priority,
+    };
+    if (this.editingId) {
+      this.taskService.updateTask(t).subscribe((t) => {
+        const found = this.tasks.filter((t) => t.id === this.editingId);
+        if (found) {
+        }
+      });
+    }
+  }
 }
