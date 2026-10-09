@@ -7,14 +7,6 @@
       "dueDate": "2026-10-12",
       "done": true,
       "estimate": 2
-    },
-    {
-      "id": "3",
-      "title": "Code review",
-      "priority": "Medium",
-      "dueDate": "2026-10-11",
-      "done": false,
-      "estimate": 1
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
